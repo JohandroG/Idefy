@@ -1,0 +1,138 @@
+.userinfo{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.userinfo>h1{
+
+    font-size: 55px;
+    margin-bottom: 70px;
+
+}
+.userinfo>h2{
+
+    font-size: 26px;
+    margin-bottom: 20px;
+
+}
+.userinfo>h2>span{
+
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+
+}
+
+.stadistics{
+    margin-bottom: 70px;
+}
+.stadistics>h2{
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+.stadistics>h2>span{
+    font-size: 30px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.tropies>h1{
+    font-size: 50px;
+}
+
+.tropies>h3{
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.rewards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.reward{
+    background-color: #F3BA39;
+    margin: 10px;
+    width: 30%;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.pic{
+    font-size: 60px;
+    text-align: center;
+}
+.users{
+    background-color: #CAE0FF;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.rewardside{
+    background-color: #ffddca;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 720px){ 
+
+    .users{
+        background-color: #CAE0FF;
+        padding: 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    .userinfo>h1{
+
+        font-size: 35px;
+        margin-bottom: 50px;
+    
+    }
+    .userinfo>h2{
+    
+        font-size: 15px;
+        margin-bottom: 20px;
+    
+    }
+    .userinfo>h2>span{
+    
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 10px;
+    
+    }
+
+    .stadistics{
+        margin-bottom: 70px;
+    }
+    .stadistics>h2{
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    .stadistics>h2>span{
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+    
+    .rewards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reward{
+        background-color: #F3BA39;
+        margin: 10px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+}

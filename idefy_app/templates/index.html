@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idefy Main Page</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/normalize.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+    
+    <div class="mainpage">
+        <h1>Welcome to Idefy</h1>
+        <h2>"Ideas for you"</h2>
+        <h4>⭐ This is a really interesting place where you can share your ideas and interact with people ⭐</h4>
+        <div class="buttons">
+            <a id="register" href="/register">Go to register</a>
+            <a id="login" href="/login">Go to Login</a>
+        </div>
+    </div>
+</body>
+</html>

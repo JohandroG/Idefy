@@ -1,0 +1,82 @@
+
+.functions>form{
+    background-color: #CAE0FF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+.insert{
+width: 60%;
+height: 30px;
+border-radius: 10px;
+border: 2px solid black;
+text-align: center;
+}
+
+.button{
+    width: 30%;
+    margin-left: 10px;
+    background-color: #F3BA39;
+    color: #2B1609;
+    border: 2px solid #2B1609;
+    border-radius: 10px;
+    
+}
+
+.label{
+    display: block;
+}
+
+.flash>p{
+    font-size: 25px;
+    color: rgb(165, 7, 7);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1023px){
+
+.functions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.functions>form{
+    background-color: #CAE0FF;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 35%;
+}
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+
+
+    .functions{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 70px;
+    }
+
+    .functions>form{
+        background-color: #CAE0FF;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        width: 45%;
+    }
+
+
+
+}

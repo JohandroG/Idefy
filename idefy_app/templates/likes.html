@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+
+
+    
+    <nav></nav>
+    <h1 class="display-4">Who liked?</h1>
+    <div style="margin-right: 60%; margin-top: 30px; margin-left: 20px;">
+        <table class="table table-hover" style="border-radius: 10px; border: 2px solid black;">
+            {% for info in likes: %}
+                    {% if info['first_name'] != None: %}
+                        <tr>
+                            <td>
+                                <a href="/profile/{{info['liker_id']}}">Username: {{info['username']}}</a>
+                            </td>
+                            <td>{{info['first_name']}} {{info['last_name']}}</td>
+                        </tr>
+                    {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    <a class="btn btn-info" href="/dashboard" style="margin-left: 20px;">Go Back</a>
+
+</body>
+</html>

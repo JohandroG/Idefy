@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/normalize.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/dashboard.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+
+</head>
+
+<body id="body">
+    
+    <header>
+        <div class="icon_menu" id="btn__open">
+            <i class="bi bi-list"></i>
+        </div>
+        <div class="logo">
+            <h1>Idefy</h1>
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu__side">
+
+        <div class="name__page" id="menu__side">
+            <i class="bi bi-lightbulb-fill" title="My profile"></i>
+            <h4>{{user['username']}}</h4>
+        </div>
+
+        <div class="options__menu">
+            
+            <a href="/dashboard" class="selected">
+                <div class="option">
+                    <i class="bi bi-house-fill" title="Home"></i>
+                    <h4>Home</h4>
+                </div>
+            </a>
+
+            <a href="/profile/{{user['user_id']}}">
+                <div class="option">
+                    <i class="bi bi-person-circle"></i>
+                    <h4>My Profile</h4>
+                </div>
+            </a>
+
+            <a href="/category">
+                <div class="option">
+                    <i class="bi bi-gear-fill" title="Category M"></i>
+                    <h4>Cat. Manager</h4>
+                </div>
+            </a>
+
+            <a href="/logout">
+                <div class="option">
+                    <i class="bi bi-door-closed-fill" title="Logout"></i>
+                    <h4>Logout</h4>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    
+        
+        <main>
+            <div class="idea">
+                <form action="/add/idea" method="POST">
+                    <h2 id="maintitle">Share you idea with the world 🌎</h2>
+                    <textarea id="myidea" name="idea" placeholder="Write here your idea 💡"></textarea>
+                    <div class="categorydiv">
+                        <select id="categories" name="category">
+                            {% for category in categories: %}
+                                <option>{{category['category']}}</option>
+                            {% endfor %}
+                        </select>
+                        <h4>Select the category</h4>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{user['user_id']}}"/>
+                    <button id="postidea" type="submit">Post idea</button>
+                </form>
+            </div>
+            
+            <h1>See Ideas:</h1>
+
+            <div class="categoryfilter">
+                <h3 id="filtermsj">You can filter the ideas by category</h3>
+                <form action="/dashboard/filtered" method="POST">
+                    <label id="filterlabel" for="categoryfil">Select the category:</label>
+                    <select id="filter" name="categoryfil">
+                        {% for category in categories: %}
+                            <option>{{category['category']}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="filterbuttons">
+                        <button id="filterbut" type="submit">
+                            Filter
+                        </button>
+                        {% if request.path == "/dashboard/filtered" :  %}
+                        <a id="removefil" href="/dashboard">Remove Filter</a>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+            
+            {% for idea in ideas: %}
+                {% if idea['first_name'] != None: %}
+                        <div class="ideasmsj">
+                            <div>
+                                <h2 id="whosays"><a id="profref" href="/profile/{{idea['user_id']}}">{{idea['first_name']}}</a> says:</h2>
+                            </div>
+                            <div>
+                                <div id="ideas"><h4>{{idea['idea_info']}}</h4></div>
+                                <div>
+                                    <div class="like">
+                                        <a id="likeref" href="/like/{{idea['idea_id']}}">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            Like
+                                        </a>
+                                        <p><a href="/who/like/{{idea['idea_id']}}">{{idea['likes']}} people </a> like this</p>
+                                    </div>
+                                    <div class="categoryinfo">
+                                        <p>Category: {{idea['category']}} </p>
+                                    </div>
+                                    
+                        </div>
+                                
+                                {% if idea['user_id'] == user['user_id']: %}
+                                <button type="button" id="editbut" onclick="opener(this)">Edit</button>
+                                <div class="editdiv">
+                                    
+                                    <div>
+                                        <form action="/edit/{{idea['idea_id']}}" method="POST">
+                                                <p id="mispell">Mispelled something?</p>
+                                                <textarea name="edit" id="edit" >{{idea['idea_info']}}</textarea>
+                                                <select name="categoryedit" id="categoryedit">
+                                                    {% for category in categories: %}
+                                                        <option>{{category['category']}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <button id="editsub" type="submit">Done</button>
+                                        </form>
+                                    </div>
+                                    <p id="or">or</p>
+                                    
+                                        <p id="delete">
+                                            <a href="/delete/{{idea['idea_id']}}">Delete Idea</a>
+                                        </p>
+                                    
+                                </div>
+                                    {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+            {% endfor %}
+            
+        </main>
+                
+    <script type="text/javascript" src="{{ url_for('static', filename='JS/dashboardmenu.js') }}"></script>
+
+</body>
+</html>

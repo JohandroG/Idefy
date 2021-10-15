@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/normalize.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/dashboard.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CSS/profile.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+
+</head>
+<body id="body">
+
+
+    <header>
+        <div class="icon_menu" id="btn__open">
+            <i class="bi bi-list"></i>
+        </div>
+        <div class="logo">
+            <h1>Idefy</h1>
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu__side">
+
+        <div class="name__page" id="menu__side">
+            <i class="bi bi-lightbulb-fill" title="My profile"></i>
+            <h4>{{user['username']}}</h4>
+        </div>
+
+        <div class="options__menu">
+            
+            <a href="/dashboard">
+                <div class="option">
+                    <i class="bi bi-house-fill" title="Home"></i>
+                    <h4>Home</h4>
+                </div>
+            </a>
+
+            <a href="/profile/{{user['user_id']}}" class="selected">
+                <div class="option">
+                    <i class="bi bi-person-circle"></i>
+                    <h4>My Profile</h4>
+                </div>
+            </a>
+
+            <a href="/category">
+                <div class="option">
+                    <i class="bi bi-gear-fill" title="Category M"></i>
+                    <h4>Cat. Manager</h4>
+                </div>
+            </a>
+
+            <a href="/logout">
+                <div class="option">
+                    <i class="bi bi-door-closed-fill" title="Logout"></i>
+                    <h4>Logout</h4>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    
+
+
+
+
+    <main>
+        <div class="users">
+            <div class="userinfo" style="border-bottom: 2px solid black; "> 
+                <!-- delete style later ============================================================= -->
+                <h1>Profile Information</h1>
+                <h2><span>Name:</span> {{user['first_name']}} {{user['last_name']}}</h2>
+                <h2><span>Username:</span> {{user['username']}}</h2>
+                <h2><span>Email:</span> {{user['email']}}</h2>
+            </div>
+            <div class="stadistics">
+                {% if ideas == 0 and likesG == 0 and likesR == 0: %}
+                <h2>This user doesn't have any information yet 😅</h2>
+                <h4>Start sharing your ideas to get some likes and archive some trophies 😀🏆🏆</h4>
+                {% else: %}
+                <h2><span>Total number of ideas:</span> {{ideas}}</h2>
+                <h2><span>Total number of likes given:</span> {{likesG}}</h2>
+                <h2><span>Total number of likes received:</span> {{likesR}}</h2>
+                {% endif %}
+                
+                
+                
+            </div>
+        </div>
+        <div class="rewardside">
+            <div class="tropies">
+                <h1>Tropies:</h1>
+                <h3>🎉Get trophies for given and receiving likes🍾</h3>
+            </div>
+<!-- ===================================================Thropies Side==================================== -->
+            <div class="rewards">
+                {% if likesR > 0: %}
+                    <div class="reward">
+                        <h2>Your first like 🏆</h2>
+                        <div class="pic">
+                            <i class="bi bi-emoji-laughing"></i>
+                        </div>
+                        <p>
+                            Congrats!! You have received your first like somebody liked your idea
+                            so, you are doing something great!! Keep on thinking 😎
+                        </p>
+                    </div>
+                {% endif  %}
+                
+                {% if likesG > 0: %}
+                    <div class="reward">
+                        <h2>Generosity 🏆</h2>
+                        <div class="pic">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                        </div>
+                        <p>
+                            You give your first like! you sure made someone's day ✌
+                        </p>
+                    </div>
+                {% endif  %}
+
+                {% if likesR > 5: %}
+                    <div class="reward">
+                        <h2>Keep Growing 🏆</h2>
+                        <div class="pic">
+                            <i class="bi bi-tree"></i>
+                        </div>
+                        <p>
+                            You have received 6 likes!! Those are more than the fingers in one hand ✋
+                        </p>
+                    </div>
+                {% endif  %}
+
+            </div>
+        </div>
+        
+    </main>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='JS/profilemenu.js') }}"></script>
+
+</body>
+</html>

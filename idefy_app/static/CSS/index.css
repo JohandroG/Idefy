@@ -1,0 +1,35 @@
+.mainpage{
+    background-color: #217FA8;
+    padding: 60px 20px;
+    border-radius: 20px;
+    margin: 5%;
+    color: white;
+    text-align: center;
+}
+
+.mainpage *{
+    margin-bottom: 20px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons>a{
+    font-size: 30px;
+    border: 2px solid rgb(9, 60, 87);;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(9, 60, 87);
+    color: white;
+    text-decoration: none;
+    margin-top: 30px;
+    
+}
+
+#register,#login{
+    text-decoration: none;
+}
